@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* Styling the body for centering and background */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f8ff; /* Light blue background */
+            font-family: Arial, sans-serif;
+        }
+    
+        /* Styling the container div */
+        div {
+            width: 400px;
+            padding: 20px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+            border: 2px solid #fff;
+            border-radius: 20px;
+            background-color: #ffffff;
+            text-align: center;
+        }
+    
+        /* Styling the input field */
+        input {
+            width: 100%;
+            height: 40px;
+            margin-bottom: 15px;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 16px;
+        }
+    
+        /* Styling the main button */
+        button {
+            width: 100px;
+            background-color: #28a745; /* Green color */
+            color: white;
+            border: none;
+            padding: 5px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+    
+        /* Styling hover effect for buttons */
+        /* button:hover {
+            background-color: green
+        } */
+    
+        /* Styling task paragraphs */
+        p {
+            
+            margin: 10px 0;
+            padding: 5px;
+            font-size: 16px;
+            color: #333;
+            text-align: left;
+            /* border-bottom: 1px solid #ccc; */
+        }
+    
+        /* Styling individual buttons (delete/edit) */
+        button + button {
+            margin-left: 60px;
+            }
+        </style>
+</head>
+<body>
+    <div id="div">
+        <h2>TO-DO-LIST</h2>
+        <input type="text" placeholder="ADD A NEW TASK" id="input"><br>
+        <button id="btn" onclick="add()">ADD TASK</button>
+        
+    </div>
+    <script>
+        var div=document.getElementById("div")
+        var btn=document.getElementById("btn")
+        function add(){
+          
+            var input=document.getElementById("input")
+            var para=document.createElement("p")
+          
+        div.append(para)
+            para.innerText=input.value
+              input.value=""
+            var del=document.createElement("button")
+            del.innerHTML="delete"
+
+            div.append(del)
+            del.addEventListener("click",function(event){
+                event.preventDefault()
+                para.innerText=""
+                div.removeChild(del)
+                div.removeChild(edit)
+            })
+            var edit=document.createElement("button")
+            edit.innerText="edit"
+            div.appendChild(edit)
+            edit.addEventListener("click",function(event){
+                event.preventDefault()
+            var a=prompt("edit task description:") 
+            para.innerText=a
+
+            })
+        }
+    </script>
+</body>
+</html>
